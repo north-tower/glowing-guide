@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Match Analysis</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Match Analysis</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Matches</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Teams</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Statistics</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8">
+        <h2>Match Analysis</h2>
+        <h4>Match: Team A vs. Team B</h4>
+        <hr>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Team A Performance</h5>
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="list-group">
+                  <li class="list-group-item">Goals Scored: 3</li>
+                  <li class="list-group-item">Shots on Goal: 8</li>
+                  <li class="list-group-item">Passing Accuracy: 85%</li>
+                  <li class="list-group-item">Possession: 55%</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="list-group">
+                  <li class="list-group-item">Yellow Cards: 2</li>
+                  <li class="list-group-item">Red Cards: 0</li>
+                  <li class="list-group-item">Fouls Committed: 10</li>
+                  <li class="list-group-item">Corners: 4</li>
+                </ul>
+              </div>
+            </div>
+            <div class="mt-4">
+              <h5>Graph: Team A Performance</h5>
+              <div id="teamPerformanceChart" style="height: 300px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.28.1"></script>
+  <script>
+    var options = {
+      series: [{
+        name: 'Team A',
+        data: [3, 8, 85, 55, 2, 0, 10, 4]
+      }],
+      chart: {
+        type: 'bar',
+        height: 300
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: '55%',
+          borderRadius: 5
+        },
+      },
+      dataLabels: {
+        enabled: false
+      },
+      xaxis: {
+        categories: ['Goals Scored', 'Shots on Goal', 'Passing Accuracy', 'Possession', 'Yellow Cards', 'Red Cards', 'Fouls Committed', 'Corners'],
+      },
+      yaxis: {
+        title: {
+          text: 'Value'
+        }
+      }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#teamPerformanceChart"), options);
+    chart.render();
+  </script>
+</body>
+</html>
